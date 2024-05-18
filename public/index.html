@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal</title>
+</head>
+<body>
+    <textarea id="terminal" cols="100" rows="20" readonly></textarea><br>
+    <input type="text" id="input" autofocus>
+</body>
+<script>
+    const ws = new WebSocket("ws://localhost:3000");
+    const terminal = document.getElementById('terminal');
+    const input = document.getElementById('input');
+
+    ws.onmessage = (event) => {
+        terminal.value += event.data;
+      };
+  
+      input.addEventListener('keypress', (event) => {
+        if (event.key === 'Enter') {
+          ws.send(input.value + '\n');
+          input.value = '';
+        }
+      });
+</script>
+</html>
