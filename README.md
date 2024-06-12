@@ -2,6 +2,6 @@
 
 Tasks: 
 - [x] SSH into linux machine
-- [ ] Execute commands from linux machine and return output.
+- [x] Execute commands from linux machine and return output.
 
 
